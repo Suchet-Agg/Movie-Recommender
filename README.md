@@ -2,7 +2,8 @@
 Movie Recommender System
 
 
-***THE PROJECT DOESN'T WORK COMBINED AS A UNIT FOR NOW, BUT THE BACKEND AND FRONTEND WORK INDIVIDUALLY***
+***THE PROJECT DOESN'T WORK COMBINED AS A UNIT FOR NOW, BUT THE BACKEND AND FRONTEND WORK INDIVIDUALLY
+I WILL TRY AND KEEP THIS REPO UDPDATED***
 -------------------------------------------------------------------------------------
 ------------This is a Simple Implementation of a Movie Recommender System------------
 -------------------------------------------------------------------------------------
