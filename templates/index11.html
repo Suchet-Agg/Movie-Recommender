@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Movie Recommender</title>
+ 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+ <style>
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+.rating {
+    float:left;
+}
+
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+#status, button {
+    margin: 20px 0;
+}
+
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("form#ratingForm").submit(function(e) 
+    {
+        e.preventDefault(); // prevent the default click action from being performed
+        if ($("#ratingForm :radio:checked").length == 0) {
+            $('#status').html("nothing checked");
+            return false;
+        } else {
+            $('#status').html( 'You picked ' + $('input:radio[name=rating]:checked').val() );
+        }
+    });
+});
+</script>
+
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+            		<p style="text-align:left;">
+                   	<a href="#">Home   </a>
+                    <a href="#">Sign In   </a>
+                    <a href="#">Sign Up   </a>
+                    </p>
+                    <p style="text-align:right;">
+					<a href='http://127.0.0.1:5000/10#' class="previous round">&#8249;</a>
+					<a href="#" class="next round">&#8250;</a>
+                    </p>
+            </nav>
+        </div>
+ 
+        <div class="jumbotron">
+        	<p style="text-align:center;">
+            <img src="https://fontmeme.com/temporary/410d28ecc75c495a2954b4c4ac492f04.png" alt="Title" >
+        	</p>
+        </div>
+ 		
+        <div class="row marketing">
+            <div class="col-lg-2">
+                <h6>{{m1}}</h4>
+                <img src="{{ user_image1 }}" alt="Movie">
+                <div id="status"></div>
+                <form id="ratingForm">
+                    <fieldset class="rating">
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating1" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating1" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating1" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating1" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating1" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <button class="submit clearfix">Submit</button>
+                </form>
+                <h6>{{m2}}</h4>
+                <img src="{{ user_image2 }}" alt="Movie">
+                <form id="ratingForm">
+                    <fieldset class="rating">
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating2" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating2" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating2" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating2" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating2" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <button class="submit clearfix">Submit</button>
+                </form>
+            </div>
+            <div class="col-lg-2">
+                <h6>{{m3}}</h4>
+                <img src="{{ user_image3 }}" alt="Movie">
+                <form id="ratingForm">
+                    <fieldset class="rating">
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating3" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating3" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating3" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating3" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating3" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <button class="submit clearfix">Submit</button>
+                </form>
+                <h6>{{m4}}</h4>
+                <img src="{{ user_image4 }}" alt="Movie">
+                <form id="ratingForm">
+                    <fieldset class="rating">
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating4" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating4" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating4" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating4" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating4" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <button class="submit clearfix">Submit</button>
+                </form>
+            </div>
+            <div class="col-lg-2">
+                <h6>{{m5}}</h4>
+                <img src="{{ user_image5 }}" alt="Movie">
+                <form id="ratingForm">
+                    <fieldset class="rating">
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating5" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating5" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating5" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating5" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating5" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <button class="submit clearfix">Submit</button>
+                </form>
+                <h6>{{m6}}</h4>
+                <img src="{{ user_image6 }}" alt="Movie">
+                <form id="ratingForm">
+                    <fieldset class="rating">
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating6" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating6" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating6" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating6" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating6" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <button class="submit clearfix">Submit</button>
+                </form>
+            </div>
+            <div class="col-lg-2">
+                <h6>{{m7}}</h4>
+                <img src="{{ user_image7 }}" alt="Movie">
+                <form id="ratingForm">
+                    <fieldset class="rating">
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating7" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating7" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating7" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating7" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating7" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <button class="submit clearfix">Submit</button>
+                </form>
+                <h6>{{m8}}</h4>
+                <img src="{{ user_image8 }}" alt="Movie">
+                <form id="ratingForm">
+                    <fieldset class="rating">
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating8" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating8" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating8" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating8" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating8" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <button class="submit clearfix">Submit</button>
+                </form>
+            </div>
+            <div class="col-lg-2">
+                <h6>{{m9}}</h4>
+                <img src="{{ user_image9 }}" alt="Movie">
+                <form id="ratingForm">
+                    <fieldset class="rating">
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating9" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating9" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating9" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating9" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating9" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <button class="submit clearfix">Submit</button>
+                </form>
+                <h6>{{m10}}</h4>
+                <img src="{{ user_image10 }}" alt="Movie">
+                <form id="ratingForm">
+                    <fieldset class="rating">
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating10" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating10" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating10" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating10" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating10" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                    <button class="submit clearfix">Submit</button>
+                </form>
+            </div>
+        </div>
+        <button type="submit" form="ratingForm" name="Submit" value="Submit">Submit</button>
+        <footer class="footer">
+            <p>&copy; Suchet Aggarwal</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>
