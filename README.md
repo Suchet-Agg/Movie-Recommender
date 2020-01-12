@@ -3,7 +3,6 @@
 A web app that suggests movies based on the past ratings and view history of the user using ITEM-ITEM and USER-USER collaborative learning
 Website Creator. The project uses data taken from TMdB and stores it in a MongoDB database.
 
-(
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -64,7 +63,7 @@ Version : 1.0.1
 ## Acknowledgments
 
 * [BootStrap](www.bootStrap.com)
-* {PyhtonSpot](https://pythonspot.com/flask-web-app-with-python/)
+* [PyhtonSpot](https://pythonspot.com/flask-web-app-with-python/)
 * [MongoDB](http://api.mongodb.com/python/3.6.0/tutorial.html#counting )
 * [Carleton](http://www.cs.carleton.edu/cs_comps/0607/recommend/recommender/itembased.html )
 * [JsFiddle](http://jsfiddle.net/ashuslove/zLm4f/6/)
