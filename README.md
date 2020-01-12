@@ -14,9 +14,11 @@ What things you need to install the software and how to install them
 1. MongoDB
 2. Python3
 
-Firstly import the databases into Mongo mongoimport -d mydb -c movieds --type csv --file /Movie_Recommender/ml-latest-small/movies.csv --headerline
+Firstly import the databases into Mongo 
 
 ```
+mongoimport -d mydb -c movieds --type csv --file /Movie_Recommender/ml-latest-small/movies.csv --headerline
+
 mongoimport -d mydb -c ratingds --type csv --file /Movie_Recommender/ml-latest-small/ratings.csv --headerline
 
 mongoimport -d mydb -c linkds --type csv --file /Movie_Recommender/ml-latest-small/links.csv --headerline
