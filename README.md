@@ -57,6 +57,11 @@ The Project still has some bugs here and there, and may seldom take long for pre
 
 Version : 1.0.1
 
+[UPDATE] : Version 1.1.1 : 
+**added ipynb and updated model**
+The earlier implementation was slow, the new one uses keras as base and is quite efficient and accurate.
+PS: This is not yet incorporated in the Web app so the web app may be broken ; (
+
 ## Authors
 
 * **Suchet Aggarwal** - *IIIT-Delhi* - [Other Work](https://github.com/Suchet-Agg)
