@@ -30,12 +30,16 @@ Run WebApp.py And Launch yuor Browser and go to : http://127.0.0.1:5000/0 (The M
 ## Additional Notes
 
 The Project still has some bugs here and there, and may seldom take long for prediction... So please be patient
+**[UPDATE]: See Version History**
 
 ## Built With
 
 * Python 
+* Pandas, numpy
+* keras
+* sklearn
+
 * Flask 
-* Pandas 
 * Pymongo 
 * json 
 * urllib 
@@ -43,15 +47,11 @@ The Project still has some bugs here and there, and may seldom take long for pre
 * MongoDB 
 * CSS 
 * JavaScript 
-* TMDB API
 
 ## API's Used
 
 * **API KEY** tmdb api key - 78077b8e590c738712916712631f58a3
-
-* **For Images** tmdb - https://image.tmdb.org/t/p/w185/
-
-* **For Movie Data** https://api.themoviedb.org/3/movie/862?api_key=78077b8e590c738712916712631f58a3
+[UPDATE]: TMdB no longer works
 
 ## Version Info
 
@@ -59,19 +59,13 @@ Version : 1.0.1
 
 [UPDATE] : Version 1.1.1 : 
 **added ipynb and updated model**
-The earlier implementation was slow, the new one uses keras as base and is quite efficient and accurate.
+The earlier implementation was slow, the new one uses keras as base and is quite efficient and accurate. Also the new implementation directly uses data from the csv using pandas instead of first loading it in MongoDB (was quite slow actually)
 PS: This is not yet incorporated in the Web app so the web app may be broken ; (
 
 ## Authors
 
 * **Suchet Aggarwal** - *IIIT-Delhi* - [Other Work](https://github.com/Suchet-Agg)
 
-
 ## Acknowledgments
-
-* [BootStrap](www.bootStrap.com)
-* [PyhtonSpot](https://pythonspot.com/flask-web-app-with-python/)
-* [MongoDB](http://api.mongodb.com/python/3.6.0/tutorial.html#counting )
-* [Carleton](http://www.cs.carleton.edu/cs_comps/0607/recommend/recommender/itembased.html )
-* [JsFiddle](http://jsfiddle.net/ashuslove/zLm4f/6/)
+* [Data Set Used](https://grouplens.org/datasets/movielens/latest/)
 
